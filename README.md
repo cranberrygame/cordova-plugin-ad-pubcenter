@@ -1,2 +1,2 @@
 
-# com.cranberrygame.phonegap.plugin.ad.pubcenter
+# com.cranberrygame.cordova.plugin.ad.pubcenter
