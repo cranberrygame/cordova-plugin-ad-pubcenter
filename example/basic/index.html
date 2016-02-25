@@ -1,0 +1,63 @@
+<html>
+<head>
+	<script type="text/javascript" src="cordova.js"></script>
+</head>
+<body>
+
+<script>
+
+var applicationId = "";
+var adUnitId = "";
+var isOverlap = true; //true: overlap, false: split
+/*
+ var applicationId;
+ var adUnitId;
+ var isOverlap = true; //true: overlap, false: split
+//wp8
+if( navigator.userAgent.match(/Windows Phone/i) ) {
+	applicationId = "";
+	adUnitId = "";
+ }
+*/
+
+document.addEventListener("deviceready", function(){
+
+	window.pubcenter.setUp(applicationId, adUnitId, isOverlap);
+		
+	//
+	window.pubcenter.onBannerAdPreloaded = function() {
+		alert('onBannerAdPreloaded');
+	};
+	window.pubcenter.onBannerAdLoaded = function() {
+		alert('onBannerAdLoaded');
+	};
+	window.pubcenter.onBannerAdShown = function() {
+		alert('onBannerAdShown');
+	};
+	window.pubcenter.onBannerAdHidden = function() {
+		alert('onBannerAdHidden');
+	};
+}, false);
+	
+/*
+position: 'top-left', 'top-center', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom-center', 'bottom-right'
+size: 	'160x600'
+		'250x250'
+		'300x250'
+		'300x600'
+		'728x90'
+*/
+</script>
+
+<p><button onclick="window.pubcenter.preloadBannerAd();">preloadBannerAd</button></p>
+<p><button onclick="window.pubcenter.showBannerAd('top-center', '160x600');">showBannerAd top-center</button></p>
+<p><button onclick="window.pubcenter.showBannerAd('bottom-center', '160x600');">showBannerAd bottom-center</button></p>
+<p><button onclick="window.pubcenter.reloadBannerAd();">reloadBannerAd</button></p>
+<p><button onclick="window.pubcenter.hideBannerAd();">hideBannerAd</button></p>
+<br>
+<p><button onclick="alert(window.pubcenter.loadedBannerAd());">loadedBannerAd</button></p>
+<br>
+<p><button onclick="alert(window.pubcenter.isShowingBannerAd());">isShowingBannerAd</button></p>
+
+</body>
+</html>

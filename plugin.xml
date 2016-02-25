@@ -2,18 +2,52 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-ad-pubcenter"
-    version="1.0.23">
+    version="1.0.24">
 	
-    <name>Pubcenter</name>
-    <description>Pubcenter</description>
+    <name>Cordova pubCenter Plugin</name>
+    <description>Cordova pubCenter Plugin</description>
     <license>MIT</license>
     <keywords>cordova,pubcenter</keywords>
     <repo>https://github.com/cranberrygame/cordova-plugin-ad-pubcenter</repo>
  	
-    <js-module src="www/pubcenter.js">
+    <js-module src="www/pubcenter.js" name="pubcenter">
         <clobbers target="window.pubcenter" />
     </js-module>
 	
+	<!-- windows -->
+    <platform name="windows">
+	
+		<!-- windows8.0 winjs -->
+		<lib-file src="MSAdvertisingJS, Version=6.1" target="win" />
+		<!--framework src="src/windows/MicrosoftAdvertising.winmd" target="win" /-->
+		<!-- windows8.1 winjs universal -->
+		<!--lib-file src="MSAdvertisingJS, Version=8.1" target="win" /-->		
+		<!--framework src="src/windows/MicrosoftAdvertising.winmd" target="win" /-->	
+<!-- 
+//SDK ID: MSAdvertisingJS, Version=6.1
+//Path: C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\MSAdvertisingJS\6.1\
+//App Package Version: 6.1
+//D:\share\cordova_test\windowstest\platforms\windows\CordovaApp.Windows80.jsproj
+//http://cordova.apache.org/docs/en/5.0.0/plugin_ref_spec.md.html
+...
+  <ItemGroup>
+    <SDKReference Include="MSAdvertisingJS, Version=6.1" />
+  </ItemGroup>
+</Project>
+-->
+<!-- 
+//SDK ID: MSAdvertisingJS, Version=8.1
+//Path: C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\MSAdvertisingJS\8.1\
+//App Package Version: 8.1
+//D:\share\cordova_test\windowstest\platforms\windows\CordovaApp.Windows.jsproj
+...
+  <ItemGroup>
+    <SDKReference Include="MSAdvertisingJS, Version=8.1" />
+  </ItemGroup>
+</Project>
+-->	
+    </platform>
+
     <!-- wp8 -->
     <platform name="wp8">
 		<config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
@@ -31,6 +65,25 @@
         </config-file>
 
         <source-file src="src/wp8/Pubcenter.cs" />
+		
+		<!--lib-file src="MSAdvertising, Version=6.1" /--><!-- SDKReference Include undefined error -->
+		<!--framework src="Microsoft.Advertising.Mobile.UI.dll" /-->
+		<framework src="src/wp8/Microsoft.Advertising.WindowsPhone.SL80.6.2.40501.1/lib/wp8/Microsoft.Advertising.Mobile.UI.dll" custom="true" />
+		<framework src="src/wp8/Microsoft.Advertising.WindowsPhone.SL80.6.2.40501.1/lib/wp8/Microsoft.Advertising.Mobile.Common.dll" custom="true" />
+		<framework src="src/wp8/Microsoft.Advertising.WindowsPhone.SL80.6.2.40501.1/lib/wp8/Microsoft.Advertising.Mobile.dll" custom="true" />
+		<framework src="Microsoft.Phone.Controls.Maps.dll" />
+<!--
+//SDK ID: Microsoft.Advertising.Mobile.UI
+//Path: C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\MSAdvertising\6.1\References\CommonConfiguration\neutral\Microsoft.Advertising.Mobile.UI.dll
+//App Package Version: 6.2.960.0
+//D:\share\cordova_test\pubcentertest\platforms\wp8\pubcentertest.csproj
+...	
+  <ItemGroup>
+    <SDKReference Include="MSAdvertising, Version=6.1">
+      <Name>Microsoft Advertising SDK for Windows Phone 8 %28XAML%29</Name>
+    </SDKReference>
+  </ItemGroup>
+</Project>
+-->
     </platform>
-
 </plugin>
